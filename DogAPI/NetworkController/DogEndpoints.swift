@@ -16,12 +16,12 @@ extension URL {
 enum DogEndpoints {
     
     case allBreedsList
-    case breedImages(String)
+    case breedRandomImage(String)
     
     var fullURL: URL? {
         // Unwrap URL as var so it can be mutated
         guard let dogListURL = URL.allBreedsURL else { return nil }
-        guard var imagesURL = URL.imagesBaseURL else { return nil }
+        guard var imageURL = URL.imagesBaseURL else { return nil }
      
         
         switch self {
@@ -29,10 +29,10 @@ enum DogEndpoints {
             print(dogListURL)
             return dogListURL
             
-        case .breedImages(let dogBreed):
-            imagesURL.appendPathComponent("\(dogBreed)/images")
-            print(imagesURL)
-            return imagesURL
+        case .breedRandomImage(let dogBreed):
+            imageURL.appendPathComponent("\(dogBreed)/images/random")
+            print(imageURL)
+            return imageURL
         }
     }
 }
