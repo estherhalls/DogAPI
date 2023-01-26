@@ -9,24 +9,26 @@ import SwiftUI
 import Combine
 //protocol DogViewDelegate:
                                 
-class DogViewModel: ObservableObject, Identifiable {
+class DogViewModel: ObservableObject {
     
+    // MARK: - Properties
     private let service: DogServiceable
-    var dog: Dog?
+   
     @Published var breedsList: [String] = []
     
     // Dependency Injection
     init(service: DogServiceable = DogService()) {
         self.service = service
     }
-    //
+    // MARK: - Methods
     func loadDogListResults() {
         service.fetch(from: .allBreedsList) { [weak self] result in
 //            self?.handle(breedsList: result)
                 switch result {
                 case .success(let breeds):
                     DispatchQueue.main.async {
-                        self?.breedsList = breeds
+                        /// Sorted Alphabetically
+                        self?.breedsList = breeds.sorted(by: <)
                     }
                     
                 case .failure(let error):
