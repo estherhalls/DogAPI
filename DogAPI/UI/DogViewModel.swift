@@ -22,7 +22,7 @@ class DogViewModel: ObservableObject {
     }
     // MARK: - Methods
     func loadDogListResults() {
-        service.fetch(from: .allBreedsList) { [weak self] result in
+        service.fetchBreedsList(from: .allBreedsList) { [weak self] result in
 //            self?.handle(breedsList: result)
                 switch result {
                 case .success(let breeds):
@@ -35,6 +35,7 @@ class DogViewModel: ObservableObject {
                     print("Error fetching dog list data!", error.localizedDescription)
         
     }
+            
     
 //    private func handle(breedsList result: Result<[String], NetworkError>) {
 //        DispatchQueue.main.async {
@@ -48,6 +49,10 @@ class DogViewModel: ObservableObject {
 //                self.encountered(error)
 //            }
         }
+    }
+    
+    func loadDogImageArray(with dogBreed: String) {
+        service.fetchBreedsList(from: .breedImages(dogBreed), completion: <#T##(Result<[String], NetworkError>) -> Void#>)
     }
     // Needs to be on view controller... if view controller is a class like UIKit
 //    func encountered(_ error: Error) {

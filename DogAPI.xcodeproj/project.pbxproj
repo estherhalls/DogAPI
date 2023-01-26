@@ -18,6 +18,7 @@
 		EB44EAB52982335000844D23 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAB42982335000844D23 /* Data+Extension.swift */; };
 		EB44EAB72982580800844D23 /* DogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAB62982580800844D23 /* DogViewModel.swift */; };
 		EB44EABA2982592F00844D23 /* DogServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAB92982592F00844D23 /* DogServiceable.swift */; };
+		EB44EABC29832BFA00844D23 /* BreedImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EABB29832BFA00844D23 /* BreedImages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		EB44EAB42982335000844D23 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		EB44EAB62982580800844D23 /* DogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogViewModel.swift; sourceTree = "<group>"; };
 		EB44EAB92982592F00844D23 /* DogServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogServiceable.swift; sourceTree = "<group>"; };
+		EB44EABB29832BFA00844D23 /* BreedImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				EB44EAAA2982207E00844D23 /* Dog.swift */,
+				EB44EABB29832BFA00844D23 /* BreedImages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB44EABC29832BFA00844D23 /* BreedImages.swift in Sources */,
 				EB44EAAE2982243A00844D23 /* NetworkController.swift in Sources */,
 				EB44EABA2982592F00844D23 /* DogServiceable.swift in Sources */,
 				EB44EAB52982335000844D23 /* Data+Extension.swift in Sources */,

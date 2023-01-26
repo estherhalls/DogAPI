@@ -1,20 +1,19 @@
 //
-//  Dog.swift
+//  BreedImages.swift
 //  DogAPI
 //
-//  Created by Esther on 1/25/23.
+//  Created by Esther on 1/26/23.
 //
 
 import Foundation
 
-struct Dog: Decodable {
+struct BreedImages: Decodable {
     private enum CodingKeys: String, CodingKey {
         case status
-        case dogBreeds = "message"
+        case image = "message"
     }
-//    let status: String
+    let status: String
 
     // I need to iterate through the keys of the nested dictionary in order to access dog breed names and create an array/list of those names
-    let dogBreeds: [String:[String]]
+    let image: String
 }
-
