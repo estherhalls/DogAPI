@@ -5,52 +5,24 @@
 //  Created by Esther on 1/25/23.
 //
 
-import UIKit
+import Foundation
 struct NetworkController {
-    
-    // MARK: - URL
-    // Base URL
-    /// private for this file but public to other functions in this file. If we wanted other endpoints on this API, they'd use this same base URL but require a different fetch function.
-    private static let baseURLString = "https://dog.ceo/api"
-    
-    // Keys for URL Components
-    /// For Dog Breed List URL
-    private static let kBreedsComponent = "breeds"
-    private static let kListComponent = "list"
-    private static let kAllComponent = "all"
-    
-    /// For Dog Image URL
-    private static let kBreedComponent = "breed"
-    private static let kImagesComponent = "images"
-    private static let kRandomComponent = "random"
-    
-    // MARK: - API Fetch Functions
-    // Dog Breed Name List
-    static func fetchPupsList(completion: @escaping (Result <Dog, NetworkError>) -> Void) {
-        // Step 1: Get baseURL
-        guard let baseURL = URL(string: baseURLString) else {
-            completion(.failure(.invalidURL(baseURLString)))
-            return
-        }
-        // Compose Final URL with URLComponents
-        let finalURL = baseURL.appending(components: kBreedsComponent, kListComponent, kAllComponent)
-        
-        print(finalURL)
+    // Divide API Service from endpoints and data decoding to make the code more reusable (if we end up needing multiple data models and to avoid rewriting the same function multiple times)
+    func perform(_ request: URLRequest, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error {
+                completion(.failure(.requestError(error)))
+            }
+            if let response = response as? HTTPURLResponse {
+                print("\(response.statusCode)")
+            }
+            guard let data = data else {
+                completion(.failure(.couldNotUnwrap))
+                return
+            }
+            completion(.success(data))
+            
+        /// Resume a suspended state of a function. Newly initialized tasks begin in suspended state.
+        }.resume()
     }
-    
-    static func fetchPupImages(with dogBreed: String, completion: @escaping (Result <UIImage, NetworkError>) -> Void) {
-        // Step 1: Get baseURL
-        guard let baseURL = URL(string: baseURLString) else {
-            completion(.failure(.invalidURL(baseURLString)))
-            return
-        }
-        // Compose Final URL with URLComponents
-        let breedURL = baseURL.appending(path: kBreedComponent)
-        let inputBreedURL = breedURL.appending(path: dogBreed)
-        let finalURL = inputBreedURL.appending(path: kImagesComponent)
-//        let finalURL = imagesURL.appending(path: kRandomComponent)
-        
-        print(finalURL)
-    }
-    
 }

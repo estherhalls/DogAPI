@@ -14,6 +14,8 @@
 		EB44EAAB2982207E00844D23 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAAA2982207E00844D23 /* Dog.swift */; };
 		EB44EAAE2982243A00844D23 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAAD2982243A00844D23 /* NetworkController.swift */; };
 		EB44EAB1298228E000844D23 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAB0298228E000844D23 /* NetworkError.swift */; };
+		EB44EAB32982321B00844D23 /* DogEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAB22982321B00844D23 /* DogEndpoints.swift */; };
+		EB44EAB52982335000844D23 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAB42982335000844D23 /* Data+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		EB44EAAA2982207E00844D23 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		EB44EAAD2982243A00844D23 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		EB44EAB0298228E000844D23 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		EB44EAB22982321B00844D23 /* DogEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogEndpoints.swift; sourceTree = "<group>"; };
+		EB44EAB42982335000844D23 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 			children = (
 				EB44EAAD2982243A00844D23 /* NetworkController.swift */,
 				EB44EAB0298228E000844D23 /* NetworkError.swift */,
+				EB44EAB22982321B00844D23 /* DogEndpoints.swift */,
+				EB44EAB42982335000844D23 /* Data+Extension.swift */,
 			);
 			path = NetworkController;
 			sourceTree = "<group>";
@@ -163,6 +169,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB44EAAE2982243A00844D23 /* NetworkController.swift in Sources */,
+				EB44EAB52982335000844D23 /* Data+Extension.swift in Sources */,
+				EB44EAB32982321B00844D23 /* DogEndpoints.swift in Sources */,
 				EB44EA9F2981FEB500844D23 /* ContentView.swift in Sources */,
 				EB44EA9D2981FEB500844D23 /* DogAPIApp.swift in Sources */,
 				EB44EAAB2982207E00844D23 /* Dog.swift in Sources */,
