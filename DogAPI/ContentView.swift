@@ -8,35 +8,26 @@
 import SwiftUI
 import Combine
 
-struct Box {
-    // Use a key when iterating over object
-    var id: Int
-    let title, imageURL: String
-}
-
 
 struct ContentView: View {
+
     // Create an instance of view model, making sure it maintains its state over content view reloads
     @StateObject var viewModel = DogViewModel()
     
-    let boxes:[Box] = [
-        //    Box(id: <#T##Int#>, title: <#T##String#>, imageURL: <#T##String#>),
-        //    Box(id: <#T##Int#>, title: <#T##String#>, imageURL: <#T##String#>),
-        //    Box(id: <#T##Int#>, title: <#T##String#>, imageURL: <#T##String#>)
-    ]
     
     var body: some View {
         NavigationView {
             List {
-                // iterate over dog breed list keys
-                ForEach(viewModel.dogsList, id:\.self) { dog in
-                    
+                
+                 // iterate over dog breed list keys
+                ForEach($viewModel.breedsList, id:\.self) { breed in
+
                     HStack {
                         Image("")
                             .frame(width: 130, height: 70)
                             .background(Color.gray)
-                        
-                        Text(dog.dogBreed)
+
+                        Text(breed.wrappedValue)
                             .bold()
                     }
                     .padding(3)
@@ -66,6 +57,11 @@ struct ContentView: View {
         }
         .padding(3)
     }
+    //    let boxes:[Box] = [
+    //        //    Box(id: <#T##Int#>, title: <#T##String#>, imageURL: <#T##String#>),
+    //        //    Box(id: <#T##Int#>, title: <#T##String#>, imageURL: <#T##String#>),
+    //        //    Box(id: <#T##Int#>, title: <#T##String#>, imageURL: <#T##String#>)
+    //    ]
 }
 
 struct ContentView_Previews: PreviewProvider {

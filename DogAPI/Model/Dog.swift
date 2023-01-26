@@ -10,10 +10,11 @@ import Foundation
 struct Dog: Decodable, Hashable {
     private enum CodingKeys: String, CodingKey {
         case status
-        case dogBreed = "message"
+        case dogBreeds = "message"
     }
     let status: String
-    // Hash map through the dogbreed dictionary?
+
     // I need to iterate through the keys of the nested dictionary in order to access dog breed names and create an array/list of those names
-    let dogBreed: [String:[String]]
+    let dogBreeds: [String:[String]]
 }
+
