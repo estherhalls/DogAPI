@@ -16,36 +16,55 @@ struct Box {
 
 
 struct ContentView: View {
-//    private let service: NetworkController
+    // Create an instance of view model, making sure it maintains its state over content view reloads
+    @StateObject var viewModel = DogViewModel()
+    
     let boxes:[Box] = [
-    Box(id: <#T##Int#>, title: <#T##String#>, imageURL: <#T##String#>),
-    Box(id: <#T##Int#>, title: <#T##String#>, imageURL: <#T##String#>),
-    Box(id: <#T##Int#>, title: <#T##String#>, imageURL: <#T##String#>),
+        //    Box(id: <#T##Int#>, title: <#T##String#>, imageURL: <#T##String#>),
+        //    Box(id: <#T##Int#>, title: <#T##String#>, imageURL: <#T##String#>),
+        //    Box(id: <#T##Int#>, title: <#T##String#>, imageURL: <#T##String#>)
     ]
-    var topLevel: Dog?
-
+    
     var body: some View {
         NavigationView {
-            Text("Hello")
-                .navigationBarTitle(Text("Dog Breeds"))
+            List {
+                // iterate over dog breed list keys
+                ForEach(viewModel.dogsList, id:\.self) { dog in
+                    
+                    HStack {
+                        Image("")
+                            .frame(width: 130, height: 70)
+                            .background(Color.gray)
+                        
+                        Text(dog.dogBreed)
+                            .bold()
+                    }
+                    .padding(3)
+                }
+                
+            }
+                .navigationTitle("Dog Breeds")
+                .onAppear {
+                    viewModel.loadDogListResults()
+                }
         }
-//        guard let dog = topLevel else { return }
-//        let dogBreedArray = dog.dogBreed
+        //        guard let dog = topLevel else { return }
+        //        let dogBreedArray = dog.dogBreed
         VStack {
             
-//            Image(systemName: "globe")
-//                .imageScale(.large)
-//                .foregroundColor(.accentColor)
-//            Text("Hello, world!")
-//            Button("Previous Image") {
-//
-//            }
-//
-//            Button("Next Image") {
-//
-//            }
+            //            Image(systemName: "globe")
+            //                .imageScale(.large)
+            //                .foregroundColor(.accentColor)
+            //            Text("Hello, world!")
+            //            Button("Previous Image") {
+            //
+            //            }
+            //
+            //            Button("Next Image") {
+            //
+            //            }
         }
-        .padding()
+        .padding(3)
     }
 }
 

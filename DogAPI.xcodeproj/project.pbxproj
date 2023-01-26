@@ -16,6 +16,8 @@
 		EB44EAB1298228E000844D23 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAB0298228E000844D23 /* NetworkError.swift */; };
 		EB44EAB32982321B00844D23 /* DogEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAB22982321B00844D23 /* DogEndpoints.swift */; };
 		EB44EAB52982335000844D23 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAB42982335000844D23 /* Data+Extension.swift */; };
+		EB44EAB72982580800844D23 /* DogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAB62982580800844D23 /* DogViewModel.swift */; };
+		EB44EABA2982592F00844D23 /* DogServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB44EAB92982592F00844D23 /* DogServiceable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		EB44EAB0298228E000844D23 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		EB44EAB22982321B00844D23 /* DogEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogEndpoints.swift; sourceTree = "<group>"; };
 		EB44EAB42982335000844D23 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
+		EB44EAB62982580800844D23 /* DogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogViewModel.swift; sourceTree = "<group>"; };
+		EB44EAB92982592F00844D23 /* DogServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogServiceable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 				EB44EAA22981FEB700844D23 /* Preview Content */,
 				EB44EAAC2982208400844D23 /* Model */,
 				EB44EAAF2982244800844D23 /* NetworkController */,
+				EB44EAB82982591400844D23 /* UI */,
 			);
 			path = DogAPI;
 			sourceTree = "<group>";
@@ -96,6 +101,15 @@
 				EB44EAB42982335000844D23 /* Data+Extension.swift */,
 			);
 			path = NetworkController;
+			sourceTree = "<group>";
+		};
+		EB44EAB82982591400844D23 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EB44EAB62982580800844D23 /* DogViewModel.swift */,
+				EB44EAB92982592F00844D23 /* DogServiceable.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,8 +183,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB44EAAE2982243A00844D23 /* NetworkController.swift in Sources */,
+				EB44EABA2982592F00844D23 /* DogServiceable.swift in Sources */,
 				EB44EAB52982335000844D23 /* Data+Extension.swift in Sources */,
 				EB44EAB32982321B00844D23 /* DogEndpoints.swift in Sources */,
+				EB44EAB72982580800844D23 /* DogViewModel.swift in Sources */,
 				EB44EA9F2981FEB500844D23 /* ContentView.swift in Sources */,
 				EB44EA9D2981FEB500844D23 /* DogAPIApp.swift in Sources */,
 				EB44EAAB2982207E00844D23 /* Dog.swift in Sources */,

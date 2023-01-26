@@ -6,7 +6,8 @@
 //
 
 import Foundation
-struct Dog: Decodable {
+
+struct Dog: Decodable, Hashable {
     private enum CodingKeys: String, CodingKey {
         case status
         case dogBreed = "message"
