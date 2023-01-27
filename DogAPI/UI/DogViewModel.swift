@@ -8,60 +8,62 @@
 import SwiftUI
 import Combine
 //protocol DogViewDelegate:
-                                
+
 class DogViewModel: ObservableObject {
     
     // MARK: - Properties
     private let service: DogServiceable
-   
-    @Published var breedsList: [String] = []
+    
+    @Published var dogs: [Dog] = []
     
     // Dependency Injection
     init(service: DogServiceable = DogService()) {
         self.service = service
     }
+    
     // MARK: - Methods
     func loadDogListResults() {
         service.fetchBreedsList(from: .allBreedsList) { [weak self] result in
-//            self?.handle(breedsList: result)
-                switch result {
-                case .success(let breeds):
-                    DispatchQueue.main.async {
-                        /// Sorted Alphabetically
-                        self?.breedsList = breeds.sorted(by: <)
-                    }
-                    
-                case .failure(let error):
-                    print("Error fetching dog list data!", error.localizedDescription)
-        
-    }
-            
-    
-//    private func handle(breedsList result: Result<[String], NetworkError>) {
-//        DispatchQueue.main.async {
-//            switch result {
-//            case .success(let breeds):
-//                DispatchQueue.main.async {
-//                    self.breedsList = breeds
-//                }
-//            case .failure(let error):
-//                print("Error fetching dog list data!", error.localizedDescription)
-//                self.encountered(error)
-//            }
+            switch result {
+            case .success(let dogs):
+                DispatchQueue.main.async {
+                    /// Sorted Alphabetically
+                    self?.dogs = dogs.sorted(by: { $0.breedName < $1.breedName } )
+                    self?.fetchImages()
+                }
+                
+            case .failure(let error):
+                print("Error fetching dog list data!", error.localizedDescription)
+            }
         }
     }
     
-    func loadDogImageArray(with dogBreed: String) {
-        service.fetchBreedsList(from: .breedImages(dogBreed), completion: <#T##(Result<[String], NetworkError>) -> Void#>)
+    func loadImage(for dog: Dog) {
+        service.fetchImageURL(from: .breedRandomImage(dog.breedName)) { [weak self] result in
+            switch result {
+            case .success(let url):
+                self?.service.fetchImage(using: url) { result in
+                    switch result {
+                    case .success(let image):
+                        DispatchQueue.main.async {
+                            dog.image = image
+                            self?.objectWillChange.send()
+                        }
+                        
+                    case .failure(let error):
+                        print("Error fetching dog image", error.localizedDescription)
+                    }
+                }
+        
+            case .failure(let error):
+                print("Error fetching image data!", error.localizedDescription)
+            }
+        }
     }
-    // Needs to be on view controller... if view controller is a class like UIKit
-//    func encountered(_ error: Error) {
-//        let alertController = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
-//        alertController.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
-//            self?.loadDogListResults()
-//        }))
-//        present(alertController, animated: true)
-//    }
- 
     
+    func fetchImages() {
+        for dog in dogs {
+            loadImage(for: dog)
+        }
+    }
 }
