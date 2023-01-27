@@ -17,21 +17,22 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                
                 // Iterate over dog breed list strings
-                ForEach($viewModel.breedsList, id:\.self) { breed in
+                ForEach($viewModel.dogs, id:\.self) { dog in
                     
                     HStack {
-                        Image("")
-                            .frame(width: 130, height: 70)
-                            .background(Color.gray)
+                        if let dogImage = dog.image.wrappedValue {
+                            Image(uiImage: dogImage)
+                                .resizable()
+                                .frame(width: 130, height: 70)
+                                .background(Color.gray)
+                        }
                         
-                        Text(breed.wrappedValue)
+                        Text(dog.breedName.wrappedValue.capitalized)
                             .bold()
                     }
                     .padding(3)
                 }
-                
             }
             .navigationTitle("Dog Breeds")
             .onAppear {
